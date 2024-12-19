@@ -1,28 +1,184 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="/static/css/envelope.css" media="screen" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Amigo Oculto</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: #e4cff8;
+            overflow: hidden;
+        }
+        #envelope {
+            position: relative;
+            width: 400px;
+            height: 250px;
+            background-color: #ff9ed2;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: dance 2s linear infinite;
+            box-shadow: 3px 3px 10px 6px rgba(0,0,0,0.2);
+            transition: opacity 0.5s ease;
+        }
+        #left, #right, #bottom, #top {
+            z-index: 3;
+        }
+        #left, #right {
+            position: absolute;
+            height: 250px;
+            width: 200px;
+            background-color: #ff80c4;
+        }
+        #left {
+            clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
+        }
+        #right {
+            left: 50%;
+            clip-path: polygon(100% 0%, 0% 50%, 100% 100%);
+        }
+        #top, #bottom {
+            position: absolute;
+            height: 125px;
+            width: 400px;
+            background-color: #ff9ed2;
+        }
+        #bottom {
+            bottom: 0;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+        #top {
+            top: 0;
+            clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+            transform-origin: top;
+            transition: 1s;
+        }
+        #result {
+            position: absolute;
+            z-index: 10;
+            width: 80%;
+            height: auto;
+            background-color: white;
+            border: 2px dashed #000;
+            left: 50%;
+            top: 30%;
+            transform: translate(-50%, -50%);
+            padding: 30px;
+            text-align: center;
+            opacity: 0;
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+        #result.visible {
+            opacity: 1;
+            transform: translate(-50%, 0);
+            pointer-events: all;
+        }
+        h3 {
+            color: #9c4dcc;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .friend-name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff1493;
+        }
+        .controls {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 5%;
+        }
+        .controls button {
+            padding: 8px 20px;
+            background-color: #dfacf3;
+            border: none;
+            font-size: 17px;
+            border-radius: 12px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        .controls button:hover {
+            background-color: #cb8ee7;
+        }
+        @keyframes dance {
+            0% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 20px); }
+            100% { transform: translate(-50%, 0); }
+        }
+        #shadow {
+            position: absolute;
+            background-color: rgba(255, 182, 193, 0.5);
+            top: 80%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            animation: resize 2s linear infinite;
+            transition: opacity 0.5s ease;
+        }
+        @keyframes resize {
+            0% { width: 360px; height: 30px; }
+            50% { width: 390px; height: 25px; }
+            100% { width: 360px; height: 30px; }
+        }
+    </style>
 </head>
 <body>
-  <div id="envelope">
-     <div id="top"></div>
-     <div id="left"></div>
-     <div id="right"></div>
-     <div id="bottom"></div>
-     <div id="letter">
-       <div id="text">
-       <h3>Seu Amigo Oculto é</h3>
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-       </div>
-       </div>
-  </div>
-  <div id="shadow"></div>
-     <div class="controls">
-      <button onClick="openEnvelope()">Open</button>
-      <button onClick="closeEnvelope()">Close</button>
+    <div id="result">
+        <h3>Seu Amigo Oculto é:</h3>
+        <p class="friend-name">{{ assigned_name }}</p>
     </div>
+    <div id="envelope">
+        <div id="top"></div>
+        <div id="left"></div>
+        <div id="right"></div>
+        <div id="bottom"></div>
+    </div>
+    <div id="shadow"></div>
+    <div class="controls">
+        <button onClick="openEnvelope()">Abrir</button>
+        <button onClick="closeEnvelope()">Fechar</button>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            const top = document.getElementById('top');
+            const result = document.getElementById('result');
+            const envelope = document.getElementById('envelope');
+            const shadow = document.getElementById('shadow');
+            
+            top.style.transform = 'rotateX(180deg)';
+            
+            setTimeout(() => {
+                result.classList.add('visible');
+                envelope.style.opacity = '0';
+                shadow.style.opacity = '0';
+            }, 1000);
+        }
+
+        function closeEnvelope() {
+            const top = document.getElementById('top');
+            const result = document.getElementById('result');
+            const envelope = document.getElementById('envelope');
+            const shadow = document.getElementById('shadow');
+            
+            result.classList.remove('visible');
+            envelope.style.opacity = '1';
+            shadow.style.opacity = '1';
+            
+            setTimeout(() => {
+                top.style.transform = 'rotateX(0deg)';
+            }, 500);
+        }
+    </script>
 </body>
 </html>

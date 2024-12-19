@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participar do Amigo Oculto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f8ff; /* Cor de fundo da página */
+        }
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ce16ce;
+            border-radius: 5px;
+            box-shadow: 0 0 50px rgba(236, 236, 232, 0.1);
+            background-color: #ffffff; /* Cor de fundo do formulário */
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff00ea;
+            color: rgb(247, 236, 243);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #e7b9dd;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Participar do Amigo Oculto</h2>
+        <form action="/ver_amigo_oculto" method="post">
+            <div class="form-group">
+                <label for="codigo_amigo_oculto">Código do Amigo Oculto:</label>
+                <input type="text" id="codigo_amigo_oculto" name="codigo_amigo_oculto" required>
+            </div>
+            <div class="form-group">
+                <label for="codigo_pessoal">Código Pessoal:</label>
+                <input type="text" id="codigo_pessoal" name="codigo_pessoal" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Ver Meu Amigo Oculto</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
