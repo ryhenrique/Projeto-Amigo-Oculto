@@ -43,5 +43,27 @@ def envelope():
     else:
         return render_template('cadastro.html')
 
+
+# Função para registrar os usuarios do amigo oculto.
+def registrar_usuario(usuario, senha):
+    try:
+        cnx = get_database_connection()
+        if not cnx:
+            return False
+
+        cursor = cnx.cursor()
+
+        # Inserir o usuário no banco de dados
+        query = "INSERT INTO usuario_secretaria (usuario, senha) VALUES (%s, %s)"
+        cursor.execute(query, (usuario, senha))
+        cnx.commit()
+        cursor.close()
+        cnx.close()
+        return True
+    except mysql.connector.Error as err:
+        print(f"Erro ao cadastrar usuário: {err}")
+        return False
+
+
 if __name__ == '__main__' :
     app.run(debug=True)
