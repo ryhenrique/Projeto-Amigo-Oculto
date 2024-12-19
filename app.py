@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-import mysql.connector
+import mysql.connector, random
 
 app = Flask(__name__)
 app.secret_key = 'chave_flask_super_secreta'  # Necessário para usar session
@@ -26,14 +26,12 @@ def index():
 @app.route('/envelope', methods=['GET', 'POST'])
 def envelope():
     if request.method == 'POST':
-        usuario = request.form.get('usuario')
-        senha = request.form.get('senha')
-
+        
         # Inserir no banco
         cnx = mysql.connector.connect(**db_config)
         cursor = cnx.cursor()
-        query = "INSERT INTO usuario_secretaria (usuario, senha) VALUES (%s, %s)"
-        cursor.execute(query, (usuario, senha))
+        query = ""
+        cursor.execute(query, (,))
         cnx.commit()
         cursor.close()
         cnx.close()
@@ -41,7 +39,7 @@ def envelope():
         # Após cadastrar, redireciona para página inicial ou outra
         return redirect(url_for('index'))
     else:
-        return render_template('cadastro.html')
+        return render_template('')
 
 if __name__ == '__main__' :
     app.run(debug=True)

@@ -8,13 +8,13 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            background-color: #f0f8ff; /* Cor de fundo da página */
+            background-color: #e7d5e7; /* Cor de fundo da página */
         }
         .form-container {
             max-width: 400px;
             margin: auto;
             padding: 20px;
-            border: 3px solid #ce16ce;
+            border: 1px solid #ce16ce;
             border-radius: 5px;
             box-shadow: 0 0 50px rgba(236, 236, 232, 0.1);
             background-color: #ffffff; /* Cor de fundo do formulário */
@@ -41,27 +41,27 @@
             cursor: pointer;
         }
         .form-group button:hover {
-            background-color: #cc74b9;
+            background-color: #df9cd6;
         }
     </style>
 </head>
 <body>
     <div class="form-container">
         <h2>Gerar Grupo</h2>
-        <form action="/geraramigooculto" method="post">
+        <form action="/inserir_nomes" method="post">
             <div class="form-group">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" required>
             </div>
             <div class="form-group">
-                <label for="quantidade">Quantidade de Pessoas:</label>
-                <input type="number" id="quantidade" name="quantidade" required>
+                <button type="submit">Inserir Nome</button>
             </div>
+        </form>
+        <form action="/geraramigooculto" method="post">
             <div class="form-group">
-                <button type="submit">Gerar amigo oculto</button>
+                <button type="submit">Gerar Amigo Oculto</button>
             </div>
         </form>
     </div>
 </body>
 </html>
-
