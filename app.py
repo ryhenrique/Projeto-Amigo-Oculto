@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-import mysql.connector
+import mysql.connector, random
 
 app = Flask(__name__)
 app.secret_key = 'chave_flask_super_secreta'  # Necessário para usar session
