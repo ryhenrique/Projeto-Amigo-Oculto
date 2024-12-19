@@ -7,14 +7,14 @@
   body{
     width:100vw;
     height:100vh;
-    background-color:#e4cff8;
+    background-color:#e1caf7;
     overflow:hidden;
   }
   #envelope{
     position:relative;
     width:400px;
     height:250px;
-    background-color:hsl(315, 58%, 66%);
+    background-color:hwb(315 23% 15%);
     top:30%;
     left:50%;
     transform:translateX(-50%);
@@ -28,7 +28,7 @@
     position:absolute;
     height:250px;
     width:200px;
-    background-color:#fb88cb;
+    background-color:#dd7bb4;
   } 
   #left{
     clip-path:polygon(0% 0%,0% 100%,100% 50%);
@@ -101,7 +101,7 @@
   }
   #shadow{
     position:absolute;
-    background-color:rgb(255, 201, 201);
+    background-color:rgba(75, 67, 67, 0.384);
     top:80%;
     left:50%;
     transform:translateX(-50%);
