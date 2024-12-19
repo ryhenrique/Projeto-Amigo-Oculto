@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Grupo</title>
+    <title>Participar do Amigo Oculto</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,7 +14,7 @@
             max-width: 400px;
             margin: auto;
             padding: 20px;
-            border: 3px solid #ce16ce;
+            border: 1px solid #ce16ce;
             border-radius: 5px;
             box-shadow: 0 0 50px rgba(236, 236, 232, 0.1);
             background-color: #ffffff; /* Cor de fundo do formulário */
@@ -41,27 +41,26 @@
             cursor: pointer;
         }
         .form-group button:hover {
-            background-color: #cc74b9;
+            background-color: #3825df;
         }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <h2>Gerar Grupo</h2>
-        <form action="/geraramigooculto" method="post">
+        <h2>Participar do Amigo Oculto</h2>
+        <form action="/ver_amigo_oculto" method="post">
             <div class="form-group">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
+                <label for="codigo_amigo_oculto">Código do Amigo Oculto:</label>
+                <input type="text" id="codigo_amigo_oculto" name="codigo_amigo_oculto" required>
             </div>
             <div class="form-group">
-                <label for="quantidade">Quantidade de Pessoas:</label>
-                <input type="number" id="quantidade" name="quantidade" required>
+                <label for="codigo_pessoal">Código Pessoal:</label>
+                <input type="text" id="codigo_pessoal" name="codigo_pessoal" required>
             </div>
             <div class="form-group">
-                <button type="submit">Gerar amigo oculto</button>
+                <button type="submit">Ver Meu Amigo Oculto</button>
             </div>
         </form>
     </div>
 </body>
 </html>
-
