@@ -52,8 +52,8 @@ def registrar_usuario(usuario, senha):
         cursor = cnx.cursor()
 
         # Inserir o usuário no banco de dados
-        query = "INSERT INTO usuario_secretaria (usuario, senha) VALUES (%s, %s)"
-        cursor.execute(query, (usuario, senha))
+        query = "INSERT INTO grupos (nome_grupo, quantidade_pessoas) VALUES (%s, %s)"
+        cursor.execute(query, (nome_grupo, quantidade_pessoas))
         cnx.commit()
         cursor.close()
         cnx.close()
