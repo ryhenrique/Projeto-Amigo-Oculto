@@ -4,6 +4,14 @@ import mysql.connector
 app = Flask(__name__)
 app.secret_key = 'chave_flask_super_secreta'  # Necessário para usar session
 
+db_config = {
+    'user': 'python',
+    'password': 'aula@123',
+    'host': 'amigooculto.mysql.database.azure.com',
+    'port': 3306,
+    'database': 'amigooculto'
+}
+
 @app.route('/')
 def index():
     return render_template('index.html')
