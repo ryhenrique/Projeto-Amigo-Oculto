@@ -4,13 +4,20 @@ import mysql.connector
 app = Flask(__name__)
 app.secret_key = 'chave_flask_super_secreta'  # Necessário para usar session
 
-db_config = {
-    'user': 'python',
-    'password': 'aula@123',
-    'host': 'amigooculto.mysql.database.azure.com',
-    'port': 3306,
-    'database': 'amigooculto'
-}
+def get_database_connection():
+    try:
+        db_config = {
+            'user': 'python',
+            'password': 'aula@123',
+            'host': 'amigooculto.mysql.database.azure.com',
+            'port': 3306,
+            'database': 'amigooculto'
+    }
+        return db_config
+    except mysql.connector.Error as err:
+        print(f"Erro de conexão: {err}")
+        return None
+
 
 @app.route('/')
 def index():
